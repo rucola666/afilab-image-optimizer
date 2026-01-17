@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Optimizer Pro</title>
+  <meta name="description" content="Ottimizza le tue immagini per il web con facilità.">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body>
+  <div id="gears-container"></div>
+  <div id="app">
+    <header>
+      <h1>IMAGE OPTIMIZER</h1>
+      <p class="subtitle">AFI-Lab Tool</p>
+      <a href="https://rlmodugno.com/about/" target="_blank" class="header-credit">Rocco Lorenzo Modugno</a>
+    </header>
+
+    <main>
+      <div id="drop-zone" class="drop-zone">
+        <div class="drop-content">
+          <div class="upload-title">UPLOAD</div>
+          <p>Drag images here or <span class="browse-btn">browse files</span></p>
+          <input type="file" id="file-input" accept="image/*" hidden>
+        </div>
+      </div>
+
+      <div id="editor-container" class="editor-container hidden">
+        <div class="image-preview-card glass-panel">
+          <h3>Original</h3>
+          <div class="preview-box">
+            <img id="original-preview" src="" alt="Original Preview">
+          </div>
+          <div class="file-info">
+            <div class="info-item">
+              <span class="label">Dimensions:</span>
+              <span class="value" id="original-dims">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Size:</span>
+              <span class="value" id="original-size">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Type:</span>
+              <span class="value" id="original-type">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">DPI:</span>
+              <span class="value" id="original-dpi">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-card glass-panel">
+          <h3>Optimization</h3>
+
+          <div class="control-group">
+            <label for="format-select">Output Format</label>
+            <select id="format-select">
+              <option value="image/png" selected>PNG</option>
+              <option value="image/webp">WebP</option>
+              <option value="image/jpeg">JPEG</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="quality-slider">Quality: <span id="quality-value">80%</span></label>
+            <input type="range" id="quality-slider" min="0.1" max="1" step="0.05" value="0.8">
+          </div>
+
+          <div class="control-group">
+            <label>Resize (px)</label>
+            <div class="resize-inputs">
+              <input type="number" id="max-width" placeholder="W" min="1">
+
+              <div class="link-aspect active" id="link-aspect" title="Lock aspect ratio">
+                ×
+              </div>
+
+              <input type="number" id="max-height" placeholder="H" min="1">
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <div id="dpi-warning" class="warning-msg hidden">
+              ⚠ Warning: Effective resolution will drop below 72 DPI (Upscaling).
+            </div>
+          </div>
+
+          <button id="process-btn" class="primary-btn">
+            <span class="btn-text">Apply Changes</span>
+          </button>
+        </div>
+
+        <div class="result-card glass-panel">
+          <h3>Result</h3>
+          <div class="preview-box">
+            <img id="result-preview" src="" alt="Result Preview">
+          </div>
+          <div class="file-info">
+            <div class="info-item">
+              <span class="label">Dimensions:</span>
+              <span class="value" id="result-dims">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Size:</span>
+              <span class="value" id="result-size">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Savings:</span>
+              <span class="value highlight" id="savings">-</span>
+            </div>
+            <div class="info-item">
+              <span class="label">DPI:</span>
+              <span class="value" id="result-dpi">-</span>
+            </div>
+          </div>
+          <a id="download-btn" class="download-btn" download>
+            <span class="btn-text">Download</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Rocco Lorenzo Modugno</p>
+      <p>Developed with Antigravity – Gemini 3</p>
+    </footer>
+  </div>
+  <script type="module" src="./main.js"></script>
+  <script src="./sketch.js"></script>
+</body>
+
+</html>
