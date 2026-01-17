@@ -1,4 +1,4 @@
-import './style.css';
+// Style is loaded via index.html link tag
 
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('file-input');
